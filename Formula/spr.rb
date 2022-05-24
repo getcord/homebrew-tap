@@ -10,8 +10,10 @@ class Spr < Formula
 
   on_linux do
     depends_on "pkg-config" => :build
-    depends_on "openssl@1.1"
+    depends_on "zlib"
   end
+
+  depends_on "openssl@1.1"
 
   def install
     system "cargo", "install", *std_cargo_args
