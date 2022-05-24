@@ -2,8 +2,8 @@ class Spr < Formula
     desc "Submit pull requests for individual, amendable, rebaseable commits to GitHub"
     homepage "https://github.com/getcord/spr"
     url "https://github.com/getcord/spr.git",
-        tag:      "v1.2.2",
-        revision: "131ba055d8affcf86a8c806b8cbe139bc9416642"
+        tag:      "v1.2.3",
+        revision: "f48663ae9cbd7eb7dee757c56726818351fb8871"
     license "MIT"
   
     depends_on "rust" => :build
