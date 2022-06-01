@@ -25,6 +25,6 @@ class Spr < Formula
   end
 
   test do
-    assert_match "spr #{version.to_s}", shell_output("#{bin}/spr --version")
+    assert_match "spr #{version}", shell_output("#{bin}/spr --version")
   end
 end
