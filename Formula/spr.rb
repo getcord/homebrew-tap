@@ -7,11 +7,11 @@ class Spr < Formula
   license "MIT"
 
   bottle do
-    root_url "https://github.com/getcord/homebrew-tap/releases/download/spr-1.3.0"
-    sha256 cellar: :any,                 monterey:     "56404b66b9fa7a462feeb64675a608af3476c1384ead42071058aac5f7ed4463"
-    sha256 cellar: :any,                 big_sur:      "4e1d3b7b5e09cac1080fe7f8e9e19a7a31823b8d0e7255e4cd71bdb999e6a318"
-    sha256 cellar: :any,                 catalina:     "c2b07114deb4c70c52a442807fb008009411a708aac7f0afd74443a8b1e20e6f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "58812ad94ff297fbe04db657426214ad7c07ecdb08924043fd918aceb1441c24"
+    root_url "https://github.com/getcord/homebrew-tap/releases/download/spr-1.3.1"
+    sha256 cellar: :any,                 monterey:     "3faf33fc17a5b7c98e447a7cf53b16fbb393edf3415be8b47400fcc4f95fa9b9"
+    sha256 cellar: :any,                 big_sur:      "8420004cc682a3065740d994a7b0f7d16488740413535be0cab78fc646b83f32"
+    sha256 cellar: :any,                 catalina:     "8b66466e815506e99156f0dce418a60148177fbbf602e2d462737e522502505f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "f8ca3ece9d04d5d910b71c7788095440ec81439b25c0c6773c45b2eff387406b"
   end
 
   depends_on "rust" => :build
