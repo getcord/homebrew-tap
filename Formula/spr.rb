@@ -2,8 +2,8 @@ class Spr < Formula
   desc "Submit pull requests for individual, amendable, rebaseable commits to GitHub"
   homepage "https://github.com/getcord/spr"
   url "https://github.com/getcord/spr.git",
-    tag:      "v1.3.1",
-    revision: "972a38c8a052a239042d631e20a4cf9b3376e4e6"
+    tag:      "v1.3.2",
+    revision: "808673bae021aa28e9ea5e4c1a56b8632ce576cc"
   license "MIT"
 
   bottle do
@@ -15,7 +15,6 @@ class Spr < Formula
   end
 
   depends_on "rust" => :build
-  depends_on "openssl@1.1"
 
   on_linux do
     depends_on "pkg-config" => :build
