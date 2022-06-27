@@ -7,11 +7,11 @@ class Spr < Formula
   license "MIT"
 
   bottle do
-    root_url "https://github.com/getcord/homebrew-tap/releases/download/spr-1.3.2"
-    sha256 cellar: :any_skip_relocation, monterey:     "fe61bf58a746b0793f9fd76a0768bf203b3c4e808a512074f98c25f1cb5c411e"
-    sha256 cellar: :any_skip_relocation, big_sur:      "dded600ae2158fe7983aa82c0dfbd052520544f03cb29f4eb3345bacdf64a3da"
-    sha256 cellar: :any_skip_relocation, catalina:     "19c9d0314dd30d56111fb375b8b0e6f4b73e6029a5ac3552f441bb55a8629251"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "f03c9957505ffde0f185e7a389d9a5026595373ef802b19173e655983a7b8215"
+    root_url "https://github.com/getcord/homebrew-tap/releases/download/spr-1.3.3"
+    sha256 cellar: :any_skip_relocation, monterey:     "8d465d0ccd02af50d3fc119dbf8b6a4250361560a7fcb3b5cc328df71d4f2ca7"
+    sha256 cellar: :any_skip_relocation, big_sur:      "c7d8deea2991f1d904b5abbcf1b3fc7e6dd4f161f620da47235c9e057470d5d3"
+    sha256 cellar: :any_skip_relocation, catalina:     "5dc1fab5e0c4f0ae0196596980726376bc5d897492fb5163f023d0f801534696"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "f8f60261534687dd2d0344ef47733afc087eef052c9e64c75502d93cafdb3705"
   end
 
   depends_on "rust" => :build
