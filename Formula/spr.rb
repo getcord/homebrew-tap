@@ -2,8 +2,8 @@ class Spr < Formula
   desc "Submit pull requests for individual, amendable, rebaseable commits to GitHub"
   homepage "https://github.com/getcord/spr"
   url "https://github.com/getcord/spr.git",
-    tag:      "v1.3.2",
-    revision: "808673bae021aa28e9ea5e4c1a56b8632ce576cc"
+    tag:      "v1.3.3",
+    revision: "1f6d99ef268643cead1341cfc51e57b84c50b962"
   license "MIT"
 
   bottle do
