@@ -2,23 +2,16 @@ class Spr < Formula
   desc "Submit pull requests for individual, amendable, rebaseable commits to GitHub"
   homepage "https://github.com/getcord/spr"
   url "https://github.com/getcord/spr.git",
-    tag:      "v1.3.3",
-    revision: "1f6d99ef268643cead1341cfc51e57b84c50b962"
+    tag:      "v1.3.4",
+    revision: "1b05ef36f0beb0ff8bdb376bf98ce77a41e41605"
   license "MIT"
 
-  bottle do
-    root_url "https://github.com/getcord/homebrew-tap/releases/download/spr-1.3.3"
-    sha256 cellar: :any_skip_relocation, monterey:     "8d465d0ccd02af50d3fc119dbf8b6a4250361560a7fcb3b5cc328df71d4f2ca7"
-    sha256 cellar: :any_skip_relocation, big_sur:      "c7d8deea2991f1d904b5abbcf1b3fc7e6dd4f161f620da47235c9e057470d5d3"
-    sha256 cellar: :any_skip_relocation, catalina:     "5dc1fab5e0c4f0ae0196596980726376bc5d897492fb5163f023d0f801534696"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "f8f60261534687dd2d0344ef47733afc087eef052c9e64c75502d93cafdb3705"
-  end
-
   depends_on "rust" => :build
+  depends_on "git" => :test
+  uses_from_macos "zlib"
 
   on_linux do
     depends_on "pkg-config" => :build
-    depends_on "zlib"
   end
 
   def install
@@ -26,6 +19,41 @@ class Spr < Formula
   end
 
   test do
-    assert_match "spr #{version}", shell_output("#{bin}/spr --version")
+    spr = "#{bin}/spr"
+    assert_match "spr #{version}", shell_output("#{spr} --version")
+
+    system "git", "init", "-b", "trunk", testpath/"test-repo"
+    system "git", "config", "--global", "user.email", "nobody@example.com"
+    system "git", "config", "--global", "user.name", "Nobody"
+    cd testpath/"test-repo" do
+      system "git", "config", "spr.githubMasterBranch", "trunk"
+
+      # Some bogus config
+      system "git", "config", "spr.githubRepository", "a/b"
+      system "git", "config", "spr.branchPrefix", "spr/"
+
+      # Create an empty commit, which is set to be upstream
+      system "git", "commit", "--allow-empty", "--message", "Empty commit"
+      mkdir ".git/refs/remotes/origin"
+      system "git rev-parse HEAD >.git/refs/remotes/origin/trunk"
+      system "git", "commit", "--allow-empty", "--message", <<~EOS
+        Hello world
+
+        Foo bar baz
+        test plan: eyes
+      EOS
+
+      system spr, "format"
+
+      expected = <<~EOS
+        Hello world
+
+        Foo bar baz
+
+        Test Plan: eyes
+      EOS
+
+      assert_match expected, shell_output("git log -n 1 --format=format:%B")
+    end
   end
 end
